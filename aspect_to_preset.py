@@ -14,7 +14,7 @@ class AspectToPresetRes:
             "required": {
                 "image": ("IMAGE",),
                 "square_threshold_pct": ("INT", {"default": 15, "min": 0, "max": 50, "step": 1}),
-                "multiplier": ("INT", {"default": 1, "min": 1, "max": 8, "step": 1}),
+                "multiplier": ("FLOAT", {"default": 1.00, "min": 0.00, "max": 8.00, "step": 0.01}),
                 "snap_to": ("INT", {"default": 8, "min": 1, "max": 64, "step": 1}),
             }
         }
@@ -52,8 +52,9 @@ class AspectToPresetRes:
                 mode = "portrait"
 
         # Scale equally (keeps aspect ratio identical)
-        out_w = base_w * int(multiplier)
-        out_h = base_h * int(multiplier)
+        m = float(multiplier)
+        out_w = int(round(base_w * m))
+        out_h = int(round(base_h * m))
 
         # Snap to latent-safe grid
         step = max(1, int(snap_to))
