@@ -106,6 +106,7 @@ The node ensures:
 Clone the repository into your ComfyUI custom_nodes directory:
 
 cd /path/to/ComfyUI/custom_nodes
+
 git clone https://github.com/kurtgamer01/comfyui-aspect-to-preset.git
 
 Restart ComfyUI and refresh the browser.
